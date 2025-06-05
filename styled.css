@@ -1,0 +1,2827 @@
+/* Basic Reset & Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Changed to a common sans-serif font */
+    background-color: #f8f8f8; /* Lighter background for content */
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Sticky Wrapper for the Header */
+/* .sticky-wrapper { */
+    /* Using position: sticky on the header itself is generally simpler */
+    /* This wrapper is mostly for context, but you can remove it and apply position: sticky to .main-header */
+/* } */
+
+/* Header Styles */
+.main-header {
+    background-color: #e91e63; /* Pink color from the image */
+    color: white;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+    /* Sticky properties */
+    position: sticky; /* Makes the element sticky */
+    top: 0;           /* Sticks to the top of the viewport */
+    width: 100%;      /* Ensures it spans full width when sticky */
+    z-index: 1000;    /* Ensures it stays on top of other content */
+}
+
+.main-header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-family: 'Georgia', serif; /* Or a custom font for the logo */
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    /* You might want to use an image for the actual logo in a real project */
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links ul li {
+    margin-left: 30px;
+}
+
+.nav-links ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links ul li a i {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+.nav-links ul li a:hover {
+    opacity: 0.8;
+}
+
+.btn-signup-login {
+    background-color: white;
+    color: #e91e63 !important;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    white-space: nowrap; /* Prevent text wrapping on button */
+}
+
+.btn-signup-login:hover {
+    background-color: #f0f0f0;
+}
+
+/* Mobile Menu Toggle (hidden on desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    cursor: pointer;
+}
+
+/* Content Below Navigation (for demonstration) */
+.hero-section {
+    background-color: #f06292; /* Lighter pink */
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.filler-content {
+    padding: 40px 20px;
+    background-color: #fff;
+}
+
+.filler-content h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #e91e63;
+}
+
+.filler-content p {
+    margin-bottom: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) { /* Adjust breakpoint if necessary */
+    .nav-links ul li {
+        margin-left: 20px; /* Reduce spacing for slightly smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-wrap: wrap;
+        justify-content: space-between; /* Keep logo left, toggle right */
+        text-align: left; /* Align logo to left */
+        align-items: center; /* Vertically align items */
+    }
+
+    .logo {
+        width: auto; /* Allow logo to take natural width */
+        margin-bottom: 0; /* Remove margin-bottom */
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu on smaller screens */
+        /* Position is relative to .main-header .container now, so no absolute positioning needed */
+    }
+
+    .nav-links {
+        display: none; /* Hide navigation by default on small screens */
+        width: 100%;
+        background-color: #c2185b; /* Darker pink for the dropdown menu */
+        position: absolute; /* Position relative to the .main-header */
+        top: 100%; /* Below the header */
+        left: 0;
+        z-index: 999; /* Slightly lower than main-header z-index */
+        padding: 15px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        max-height: 0; /* Hidden by default */
+        overflow: hidden; /* Hide overflow when closed */
+        transition: max-height 0.3s ease-out; /* Smooth transition */
+    }
+
+    .nav-links.active {
+        display: block; /* Show menu when active */
+        max-height: 500px; /* Sufficient height to show all links */
+        transition: max-height 0.5s ease-in; /* Smooth transition */
+    }
+
+    .nav-links ul {
+        flex-direction: column; /* Stack links vertically */
+        margin-left: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .nav-links ul li {
+        margin: 0; /* Remove horizontal margin */
+        width: 100%;
+        text-align: center; /* Center the text for each link */
+    }
+
+    .nav-links ul li a {
+        padding: 12px 20px; /* Add vertical padding for tapping */
+        display: block; /* Make links full width for easier tapping */
+        width: 100%;
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .nav-links ul li a:hover {
+        background-color: rgba(0,0,0,0.1); /* Subtle hover effect */
+    }
+
+    .nav-links ul li:last-child {
+        margin-top: 20px;
+    }
+
+    .btn-signup-login {
+        margin: 0 auto; /* Center the button in the mobile menu */
+        display: block; /* Make it a block element to center */
+        width: fit-content; /* Fit content width */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 2em;
+    }
+
+    .nav-links ul li a {
+        font-size: 1em;
+    }
+
+    .btn-signup-login {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+
+    .hero-section h2 {
+        font-size: 2em;
+    }
+
+    .hero-section p {
+        font-size: 1em;
+    }
+}
+
+/* 2ndpart */
+
+/* Hero Banner Section */
+.hero-banner {
+    background-color: #f12a64; /* Pink color from the image */
+    color: white;
+    padding: 60px 20px; /* Adjust padding as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* CRITICAL: Allows absolute positioning of child images */
+    min-height: 450px; /* Ensure a minimum height for the banner */
+    overflow: hidden; /* Hide overflowing parts of food images */
+}
+
+.hero-banner .content-wrapper {
+    text-align: center;
+    max-width: 800px; /* Limit content width */
+    width: 100%; /* Ensure it takes available width */
+    z-index: 1; /* Ensure text and inputs are above food images */
+}
+
+.main-heading {
+    font-size: 2.8em; /* Adjust font size */
+    margin-bottom: 40px;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+/* Food Image Containers */
+.food-image-container {
+    position: absolute; /* Positions the container relative to .hero-banner */
+    top: 50%; /* Start at 50% from the top */
+    transform: translateY(-50%); /* Move up by half its own height to truly center */
+    width: 280px; /* Adjust size of food image containers */
+    height: 280px;
+    /* Optional: If you want a circular cut-out */
+    border-radius: 50%;
+    overflow: hidden; /* Crucial for clipping the image to the border-radius */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Optional: Add a subtle shadow */
+}
+
+.food-img {
+    width: 100%; /* Make image fill its container */
+    height: 100%; /* Make image fill its container */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    display: block; /* Removes extra space below image */
+}
+
+.left-food {
+    left: -100px; /* Position off-screen to create partial visibility */
+}
+
+.right-food {
+    right: -80px; /* Position off-screen */
+}
+
+/* Search Form (from previous code, included for completeness) */
+.search-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.input-group {
+    background-color: white;
+    border-radius: 30px;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    min-width: 280px;
+    max-width: 400px;
+    flex-grow: 1;
+}
+
+.input-group i {
+    color: #e91e63;
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.input-group input {
+    border: none;
+    outline: none;
+    font-size: 1.1em;
+    padding: 5px 0;
+    flex-grow: 1;
+    color: #333;
+}
+
+.input-group input::placeholder {
+    color: #888;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-banner {
+        padding: 50px 15px;
+        min-height: 400px;
+    }
+
+    .main-heading {
+        font-size: 2.2em;
+        margin-bottom: 30px;
+    }
+
+    .food-image-container {
+        width: 220px; /* Smaller image containers */
+        height: 220px;
+    }
+
+    .left-food {
+        left: -80px; /* Adjust position */
+    }
+
+    .right-food {
+        right: -80px; /* Adjust position */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        flex-direction: column; /* Stack main content vertically */
+        min-height: auto;
+        padding: 40px 15px;
+    }
+
+    .main-heading {
+        font-size: 1.8em;
+        margin-bottom: 25px;
+    }
+
+    .search-form {
+        flex-direction: column; /* Stack inputs vertically */
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .input-group {
+        width: 90%;
+        max-width: 450px;
+        padding: 10px 20px;
+        min-width: unset;
+    }
+
+    .input-group input {
+        font-size: 1em;
+    }
+
+    /* Hide the decorative food images on tablets and mobile */
+    .food-image-container {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-heading {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        width: 95%;
+        padding: 8px 15px;
+    }
+
+    .input-group i {
+        margin-right: 10px;
+        font-size: 1em;
+    }
+}
+
+/* 3rd part */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Categories Section */
+.categories-section {
+    background-color: #fbebf2; /* Light pink background from the image */
+    padding: 40px 0;
+    position: relative; /* For positioning the scroll button */
+}
+
+.section-heading {
+    color: #e91e63; /* Pink text color */
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: left; /* Aligns with the image */
+    padding-left: 20px; /* Aligns with container padding */
+}
+
+/* Carousel Wrapper */
+.categories-carousel-wrapper {
+    position: relative;
+    padding-right: 60px; /* Space for the scroll button */
+}
+
+/* Categories Carousel (the horizontally scrolling part) */
+.categories-carousel {
+    display: flex; /* Arranges items in a row */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    scroll-snap-type: x mandatory; /* Snaps to items (optional, but good for carousels) */
+    padding-bottom: 15px; /* Space for scrollbar if present */
+    gap: 20px; /* Space between items */
+}
+
+/* Hide scrollbar for aesthetics (optional, can affect UX) */
+.categories-carousel::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, Opera */
+}
+.categories-carousel {
+    -ms-overflow-style: none; /* For IE and Edge */
+    scrollbar-width: none; /* For Firefox */
+}
+
+/* Individual Category Item */
+.category-item {
+    flex: 0 0 auto; /* Prevents items from shrinking */
+    width: 100px; /* Fixed width for each item (adjust as needed) */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-snap-align: start; /* Snap to the start of each item */
+}
+
+.category-icon {
+    width: 80px; /* Size of the circular icon area */
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden; /* Ensures image is clipped to circle */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff; /* Default background for icons */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    border: 2px solid transparent; /* Default border */
+    transition: all 0.3s ease;
+}
+
+.category-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the circle */
+    display: block;
+}
+
+.empty-circle {
+    background-color: #fff; /* White background for the empty circle */
+    border: 2px dashed #ccc; /* Dashed border for empty circle */
+}
+
+.category-name {
+    font-size: 0.9em;
+    color: #555;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    max-width: 100%; /* Ensure text respects item width */
+    font-weight: 500;
+}
+
+.category-item:hover .category-icon {
+    border-color: #e91e63; /* Highlight border on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Scroll Button */
+.scroll-button {
+    position: absolute;
+    right: 0; /* Position to the right of the wrapper */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 10; /* Ensure it's above carousel items */
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-button i {
+    color: #e91e63; /* Icon color */
+    font-size: 1.2em;
+}
+
+.scroll-button:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-heading {
+        font-size: 1.4em;
+        margin-bottom: 25px;
+    }
+
+    .categories-carousel {
+        gap: 15px; /* Reduce gap on smaller screens */
+        padding-bottom: 10px;
+    }
+
+    .category-item {
+        width: 90px; /* Slightly smaller item width */
+    }
+
+    .category-icon {
+        width: 70px; /* Smaller icon size */
+        height: 70px;
+    }
+
+    .category-name {
+        font-size: 0.85em;
+    }
+
+    .categories-carousel-wrapper {
+        padding-right: 50px; /* Adjust space for smaller button */
+    }
+
+    .scroll-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-heading {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        padding-left: 15px; /* Adjust padding for smaller container */
+    }
+
+    .container {
+        padding: 0 15px; /* Smaller container padding */
+    }
+
+    .categories-carousel {
+        gap: 10px; /* Even smaller gap */
+    }
+
+    .category-item {
+        width: 80px; /* Even smaller item width */
+    }
+
+    .category-icon {
+        width: 60px; /* Smallest icon size */
+        height: 60px;
+    }
+
+    /* Hide scroll button on very small screens if manual scrolling is expected */
+    .scroll-button {
+        display: none;
+    }
+
+    .categories-carousel-wrapper {
+        padding-right: 0; /* Remove padding if button is hidden */
+    }
+}
+
+/* 4thpart */
+
+.top-filters-and-categories {
+    background-color: #fff; /* White background for this section */
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+    margin-bottom: 30px;
+}
+
+.top-filter-menu {
+    border-bottom: 1px solid #eee; /* Separator line */
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    padding-left: 20px; /* Align with container */
+    padding-right: 20px;
+}
+
+.top-filter-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 15px; /* Space between menu items */
+}
+
+.top-filter-menu ul li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+    display: flex; /* For alignment of text and badge */
+    align-items: center;
+}
+
+.top-filter-menu ul li a:hover,
+.top-filter-menu ul li a.active {
+    color: #e91e63; /* Pink on hover/active */
+}
+
+.top-filter-menu ul li a.active {
+    position: relative;
+}
+
+.top-filter-menu ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -15px; /* Position below the text */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #e91e63; /* Pink underline */
+    border-radius: 2px;
+}
+
+.free-badge {
+    background-color: #e91e63; /* Pink background for "FREE" badge */
+    color: white;
+    font-size: 0.7em;
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+/* Categories Carousel (Reusing and adapting previous code) */
+.categories-carousel-wrapper.categories-filters {
+    padding-right: 70px; /* More space for two buttons */
+    padding-left: 20px; /* Added left padding to match container */
+}
+
+.categories-carousel {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 15px;
+    gap: 25px; /* Adjust gap between category circles */
+}
+
+/* Hide scrollbar for aesthetics */
+.categories-carousel::-webkit-scrollbar {
+    display: none;
+}
+.categories-carousel {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.category-item {
+    flex: 0 0 auto;
+    width: 100px; /* Fixed width for each item */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8; /* Light grey background for the icons */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.category-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Use contain for logos/icons to fit without cropping */
+    padding: 5px; /* Add some padding inside the circle if needed */
+}
+
+.category-name {
+    font-size: 0.9em;
+    color: #555;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-weight: 500;
+}
+
+.category-item:hover .category-icon {
+    border-color: #e91e63; /* Pink border on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Scroll Buttons for Categories Carousel */
+.categories-carousel-wrapper .scroll-button {
+    position: absolute;
+    top: 50%; /* Position relative to the categories-carousel-wrapper */
+    transform: translateY(-50%);
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 10;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.categories-carousel-wrapper .scroll-button.right {
+    right: 0px; /* Position to the right of the wrapper */
+}
+
+.categories-carousel-wrapper .scroll-button.left {
+    left: -10px; /* Position to the left, slightly off-screen */
+    display: none; /* Hide left button by default, show with JS when not at start */
+}
+
+.categories-carousel-wrapper .scroll-button i {
+    color: #e91e63;
+    font-size: 1.2em;
+}
+
+.categories-carousel-wrapper .scroll-button:hover {
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+/* Responsive for Top Filters and Categories */
+@media (max-width: 1024px) {
+    .categories-carousel-wrapper.categories-filters {
+        padding-right: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-filter-menu ul {
+        justify-content: flex-start; /* Align left */
+        overflow-x: auto; /* Allow horizontal scrolling if many items */
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap; /* Prevent wrapping if overflow-x is auto */
+        padding-bottom: 10px; /* Space for scrollbar */
+    }
+    .top-filter-menu ul::-webkit-scrollbar {
+        display: none;
+    }
+    .top-filter-menu ul {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .top-filter-menu ul li {
+        flex-shrink: 0; /* Prevent items from shrinking */
+    }
+
+    .top-filter-menu ul li a {
+        padding: 5px 8px; /* Reduce padding */
+        font-size: 0.95em;
+    }
+
+    .categories-carousel {
+        gap: 15px;
+    }
+
+    .category-item {
+        width: 85px;
+    }
+
+    .category-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .category-name {
+        font-size: 0.85em;
+    }
+
+    .categories-carousel-wrapper.categories-filters {
+        padding-right: 50px; /* Adjust space for smaller buttons */
+        padding-left: 15px; /* Adjust left padding */
+    }
+
+    .categories-carousel-wrapper .scroll-button {
+        width: 40px;
+        height: 40px;
+    }
+    .categories-carousel-wrapper .scroll-button.left {
+        left: 5px; /* Keep it visible on screen */
+    }
+}
+
+@media (max-width: 480px) {
+    .top-filter-menu {
+        padding-left: 10px; /* Smaller padding */
+        padding-right: 10px;
+    }
+    .top-filter-menu ul li a {
+        font-size: 0.9em;
+    }
+
+    .categories-carousel {
+        gap: 10px;
+    }
+
+    .category-item {
+        width: 75px;
+    }
+
+    .category-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .category-name {
+        font-size: 0.8em;
+    }
+
+    .categories-carousel-wrapper.categories-filters {
+        padding-right: 0; /* No space for buttons if they are hidden */
+        padding-left: 10px;
+    }
+
+    /* Hide scroll buttons on very small screens for touch scrolling */
+    .categories-carousel-wrapper .scroll-button {
+        display: none;
+    }
+}
+
+
+/* 5thpart */
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.navigation-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.arrow-btn:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* Restaurants Section */
+.restaurants-section {
+    padding: 0 20px;
+    margin-bottom: 40px;
+}
+
+.restaurants-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll for arrow buttons */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+    gap: 20px; /* Space between cards */
+    padding-bottom: 15px; /* Space for scrollbar on some browsers */
+}
+
+/* Hide scrollbar for aesthetic purposes (optional) */
+.restaurants-container::-webkit-scrollbar {
+    display: none;
+}
+.restaurants-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+.restaurant-card {
+    flex: 0 0 auto; /* Do not grow, do not shrink, base size auto (content-based) */
+    width: 300px; /* Fixed width for each card */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For heart icon and labels */
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Fixed height for consistent images */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 18px;
+    color: #e74c3c; /* Red heart */
+    cursor: pointer;
+}
+
+.closed-label, .preorder-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.preorder-label {
+    top: 70%; /* Adjust position if both labels are present */
+    font-size: 12px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.closed-card .card-image img {
+    filter: grayscale(100%) brightness(50%); /* Dim image for closed restaurants */
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.restaurant-name {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #f39c12; /* Star color */
+}
+
+.rating .stars {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cuisine {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.details {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.offer {
+    background-color: #ffe0e6; /* Light red/pink background */
+    color: #e74c3c; /* Red text */
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Promotions Section */
+.promotions-section {
+    padding: 0 20px;
+    margin-bottom: 40px;
+}
+
+.promotion-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding-bottom: 15px;
+}
+
+.promotion-container::-webkit-scrollbar {
+    display: none;
+}
+.promotion-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.promotion-card {
+    flex: 0 0 auto;
+    width: 400px; /* Adjust width as needed for promotions */
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.promotion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.promo-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.8); /* Red badge */
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.promo-badge small {
+    font-size: 14px;
+    display: block;
+    line-height: 1;
+}
+
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 1024px) {
+    .restaurant-card {
+        width: 280px; /* Slightly smaller cards on tablets */
+    }
+    .promotion-card {
+        width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .header h1 {
+        font-size: 20px;
+    }
+    .navigation-arrows {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .restaurant-card {
+        width: 250px; /* Even smaller cards on smaller tablets/large phones */
+    }
+    .promotion-card {
+        width: 300px;
+    }
+    .restaurants-section, .promotions-section {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .restaurant-card {
+        width: 85vw; /* Cards take up most of the viewport width on phones */
+    }
+    .promotion-card {
+        width: 90vw;
+    }
+    .header h1 {
+        font-size: 18px;
+    }
+    .arrow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+/* 6th */
+
+/* Promotions Section */
+.promotions-section {
+    padding: 20px 0; /* Add some vertical padding */
+    position: relative; /* For arrow positioning */
+    overflow: hidden; /* Hide overflow from arrows potentially sticking out */
+}
+
+.promotions-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative; /* For positioning arrows over the container */
+    padding: 0 40px; /* Space for arrows */
+}
+
+.promotion-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll for arrow buttons */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+    gap: 20px; /* Space between cards */
+    padding-bottom: 15px; /* Space for scrollbar on some browsers */
+    flex-grow: 1; /* Allow container to take available space */
+}
+
+/* Hide scrollbar for aesthetic purposes (optional) */
+.promotion-container::-webkit-scrollbar {
+    display: none;
+}
+.promotion-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.arrow-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    z-index: 100; /* Ensure arrows are above cards */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.arrow-btn:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.prev-btn {
+    margin-right: -20px; /* Overlap slightly with container */
+    transform: translateX(0); /* Initial position */
+}
+
+.next-btn {
+    margin-left: -20px; /* Overlap slightly with container */
+    transform: translateX(0); /* Initial position */
+}
+
+
+.promotion-card {
+    flex: 0 0 auto; /* Do not grow, do not shrink, base size auto */
+    width: 450px; /* Fixed width for each card, adjust as needed */
+    height: 200px; /* Fixed height for consistency */
+    background-color: #fff;
+    border-radius: 20px; /* More rounded corners based on image */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For badge and brand logo */
+}
+
+.promotion-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area */
+    display: block;
+}
+
+.promo-badge {
+    position: absolute;
+    bottom: 20px; /* Adjust based on image */
+    right: 20px; /* Adjust based on image */
+    background-color: #e74c3c; /* Red color from image */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 15px; /* Rounded corners for the badge */
+    font-size: 28px; /* Larger percentage */
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1; /* Tighter line height for percentage */
+    min-width: 70px; /* Ensure a minimum width */
+    min-height: 70px; /* Ensure a minimum height */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.promo-badge span {
+    font-size: 1.2em; /* Emphasize the number */
+}
+
+.promo-badge small {
+    font-size: 0.5em; /* Smaller "OFF" text */
+    display: block;
+    margin-top: -5px; /* Pull "OFF" closer to number */
+}
+
+.brand-logo {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; /* Assuming white text for brand logos on image */
+    padding: 5px 10px;
+    border-radius: 5px;
+    /* backdrop-filter: blur(2px); optional blurred background */
+}
+
+.brand-logo.top-right {
+    top: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+}
+
+.brand-logo.top-left {
+    top: 15px;
+    left: 15px;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+}
+
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 1200px) {
+    .promotion-card {
+        width: 400px;
+        height: 180px;
+    }
+    .promo-badge {
+        font-size: 24px;
+        padding: 8px 12px;
+        min-width: 60px;
+        min-height: 60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .promotions-wrapper {
+        padding: 0 30px; /* Reduce padding for arrows */
+    }
+    .arrow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    .promotion-card {
+        width: 350px;
+        height: 160px;
+    }
+    .promo-badge {
+        font-size: 20px;
+        padding: 6px 10px;
+        min-width: 50px;
+        min-height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .promotions-wrapper {
+        padding: 0 20px;
+    }
+    .arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .promotion-card {
+        width: 85vw; /* Make cards take up most of the viewport width */
+        height: 150px;
+        border-radius: 15px;
+    }
+    .promo-badge {
+        font-size: 18px;
+        padding: 5px 8px;
+        min-width: 45px;
+        min-height: 45px;
+        bottom: 15px;
+        right: 15px;
+    }
+    .brand-logo {
+        font-size: 14px;
+        padding: 3px 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .promotions-wrapper {
+        padding: 0 10px; /* Even less padding on very small screens */
+    }
+    .arrow-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+    .promo-badge {
+        font-size: 16px;
+        bottom: 10px;
+        right: 10px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    .brand-logo {
+        font-size: 12px;
+    }
+}
+
+/* 7thsection */
+
+/* Influencers Section */
+.influencers-section {
+    padding: 30px 20px; /* Adjust padding as needed */
+    background-color: #fcebeb; /* Light pink background from the image */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+}
+
+.navigation-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.arrow-btn:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    transform: scale(1.05);
+}
+
+.influencers-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll for arrow buttons */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+    gap: 25px; /* Space between cards */
+    padding-bottom: 15px; /* Space for scrollbar on some browsers */
+}
+
+/* Hide scrollbar for aesthetic purposes (optional) */
+.influencers-container::-webkit-scrollbar {
+    display: none;
+}
+.influencers-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.influencer-card {
+    flex: 0 0 auto; /* Do not grow, do not shrink, base size auto */
+    width: 250px; /* Fixed width for each card, adjust as needed */
+    background-color: #fff;
+    border-radius: 15px; /* Rounded corners for the card */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding-bottom: 15px; /* Space for name */
+}
+
+.influencer-card.pink-background {
+    background-color: #f8e0e6; /* Specific pink background for the first card */
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 250px; /* Fixed height for image area */
+    overflow: hidden;
+    border-radius: 15px 15px 0 0; /* Match card border radius */
+    margin-bottom: 10px;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.influencer-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+    margin: 0;
+}
+
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 1200px) {
+    .section-header h2 {
+        font-size: 24px;
+    }
+    .arrow-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    .influencer-card {
+        width: 220px;
+    }
+    .card-image-wrapper {
+        height: 220px;
+    }
+}
+
+@media (max-width: 992px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .section-header h2 {
+        font-size: 22px;
+    }
+    .navigation-arrows {
+        width: 100%;
+        justify-content: flex-end; /* Arrows align to right below title */
+    }
+    .arrow-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
+    }
+    .influencer-card {
+        width: 200px;
+    }
+    .card-image-wrapper {
+        height: 200px;
+    }
+    .influencer-name {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .influencers-section {
+        padding: 20px 15px;
+    }
+    .influencer-card {
+        width: 180px; /* Smaller cards on tablets */
+        border-radius: 10px;
+    }
+    .card-image-wrapper {
+        height: 180px;
+        border-radius: 10px 10px 0 0;
+    }
+    .arrow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header h2 {
+        font-size: 20px;
+    }
+    .influencer-card {
+        width: 75vw; /* Cards take up most of the viewport width on phones */
+        height: auto; /* Adjust height based on content */
+        padding-bottom: 10px;
+    }
+    .card-image-wrapper {
+        height: 75vw; /* Make image wrapper square relative to viewport width */
+    }
+    .influencer-name {
+        font-size: 15px;
+    }
+    .arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+/* 8thse */
+
+/* Section Header (for "Picked For You") */
+.picked-for-you-section {
+    padding: 30px 20px; /* Adjust padding as needed */
+    background-color: #fff; /* White background for the section */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+}
+
+.navigation-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.arrow-btn:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Restaurants Container (for scrolling) */
+.restaurants-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll for arrow buttons */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+    gap: 20px; /* Space between cards */
+    padding-bottom: 15px; /* Space for scrollbar on some browsers */
+}
+
+/* Hide scrollbar for aesthetic purposes (optional) */
+.restaurants-container::-webkit-scrollbar {
+    display: none;
+}
+.restaurants-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Individual Restaurant Card */
+.restaurant-card {
+    flex: 0 0 auto; /* Do not grow, do not shrink, base size auto */
+    width: 300px; /* Fixed width for each card, adjust as needed */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For logo circle */
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Fixed height for consistent images */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.logo-circle {
+    position: absolute;
+    bottom: -20px; /* Half out of the image to sit below it */
+    left: 20px;
+    background-color: #fff;
+    border: 2px solid #eee; /* Light border */
+    border-radius: 50%;
+    width: 50px; /* Size of the circle */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 5; /* Ensure it's above card content but below image */
+}
+
+.logo-circle img {
+    width: 80%; /* Adjust logo size within circle */
+    height: 80%;
+    object-fit: contain; /* Ensure logo is fully visible */
+    border-radius: 50%; /* If logo itself is circular */
+}
+
+.card-content {
+    padding: 25px 15px 15px 15px; /* Top padding adjusted for logo circle */
+    position: relative; /* To contain its elements */
+}
+
+.restaurant-name {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #f39c12; /* Star color */
+}
+
+.rating .stars {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cuisine {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.details {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.offer {
+    background-color: #ffe0e6; /* Light red/pink background */
+    color: #e74c3c; /* Red text */
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 1024px) {
+    .section-header h2 {
+        font-size: 24px;
+    }
+    .arrow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    .restaurant-card {
+        width: 280px; /* Slightly smaller cards on tablets */
+    }
+    .card-image {
+        height: 160px;
+    }
+    .logo-circle {
+        width: 45px;
+        height: 45px;
+        bottom: -22px;
+    }
+    .restaurant-name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .section-header h2 {
+        font-size: 22px;
+    }
+    .navigation-arrows {
+        width: 100%;
+        justify-content: flex-end; /* Arrows align to right below title */
+    }
+    .restaurant-card {
+        width: 250px; /* Even smaller cards on smaller tablets/large phones */
+    }
+    .card-image {
+        height: 150px;
+    }
+    .logo-circle {
+        width: 40px;
+        height: 40px;
+        bottom: -20px;
+        left: 15px;
+    }
+    .card-content {
+        padding: 20px 10px 10px 10px;
+    }
+    .cuisine, .details, .offer {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .picked-for-you-section {
+        padding: 20px 15px;
+    }
+    .section-header h2 {
+        font-size: 20px;
+    }
+    .arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .restaurant-card {
+        width: 85vw; /* Cards take up most of the viewport width on phones */
+    }
+    .card-image {
+        height: 50vw; /* Adjust image height relative to viewport width */
+    }
+    .logo-circle {
+        width: 35px;
+        height: 35px;
+        bottom: -17px;
+        left: 10px;
+    }
+    .restaurant-name {
+        font-size: 16px;
+    }
+    .card-content {
+        padding: 18px 8px 8px 8px;
+    }
+}
+
+/* 8h sec */
+
+/* Section Header (for "Chocolate Lovers") */
+.chocolate-lovers-section {
+    padding: 30px 20px; /* Adjust padding as needed */
+    background-color: #fcebeb; /* Light pink background from the image */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+}
+
+.navigation-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.arrow-btn:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Dessert Container (for scrolling) */
+.dessert-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll for arrow buttons */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+    gap: 20px; /* Space between cards */
+    padding-bottom: 15px; /* Space for scrollbar on some browsers */
+}
+
+/* Hide scrollbar for aesthetic purposes (optional) */
+.dessert-container::-webkit-scrollbar {
+    display: none;
+}
+.dessert-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Individual Dessert Card */
+.dessert-card {
+    flex: 0 0 auto; /* Do not grow, do not shrink, base size auto */
+    width: 300px; /* Fixed width for each card, adjust as needed */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For discount, heart, and logo circle */
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Fixed height for consistent images */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 15px;
+    left: 0; /* Aligned to the left edge */
+    background-color: #e74c3c; /* Red color for discount */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 0 5px 5px 0; /* Rounded on right side only */
+    font-size: 13px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 18px;
+    color: #e74c3c; /* Red heart */
+    cursor: pointer;
+    z-index: 10;
+}
+
+.logo-circle {
+    position: absolute;
+    bottom: -20px; /* Half out of the image to sit below it */
+    left: 20px;
+    background-color: #fff;
+    border: 2px solid #eee; /* Light border */
+    border-radius: 50%;
+    width: 50px; /* Size of the circle */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 5; /* Ensure it's above card content but below image */
+}
+
+.logo-circle img {
+    width: 80%; /* Adjust logo size within circle */
+    height: 80%;
+    object-fit: contain; /* Ensure logo is fully visible */
+    border-radius: 50%; /* If logo itself is circular */
+}
+
+.card-content {
+    padding: 25px 15px 15px 15px; /* Top padding adjusted for logo circle */
+    position: relative; /* To contain its elements */
+}
+
+.dessert-name {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #f39c12; /* Star color */
+}
+
+.rating .stars {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cuisine {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.details {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 1024px) {
+    .section-header h2 {
+        font-size: 24px;
+    }
+    .arrow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    .dessert-card {
+        width: 280px; /* Slightly smaller cards on tablets */
+    }
+    .card-image {
+        height: 160px;
+    }
+    .logo-circle {
+        width: 45px;
+        height: 45px;
+        bottom: -22px;
+    }
+    .dessert-name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .section-header h2 {
+        font-size: 22px;
+    }
+    .navigation-arrows {
+        width: 100%;
+        justify-content: flex-end; /* Arrows align to right below title */
+    }
+    .dessert-card {
+        width: 250px; /* Even smaller cards on smaller tablets/large phones */
+    }
+    .card-image {
+        height: 150px;
+    }
+    .logo-circle {
+        width: 40px;
+        height: 40px;
+        bottom: -20px;
+        left: 15px;
+    }
+    .card-content {
+        padding: 20px 10px 10px 10px;
+    }
+    .cuisine, .details {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chocolate-lovers-section {
+        padding: 20px 15px;
+    }
+    .section-header h2 {
+        font-size: 20px;
+    }
+    .arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .dessert-card {
+        width: 85vw; /* Cards take up most of the viewport width on phones */
+    }
+    .card-image {
+        height: 50vw; /* Adjust image height relative to viewport width */
+    }
+    .logo-circle {
+        width: 35px;
+        height: 35px;
+        bottom: -17px;
+        left: 10px;
+    }
+    .dessert-name {
+        font-size: 16px;
+    }
+    .card-content {
+        padding: 18px 8px 8px 8px;
+    }
+    .discount-badge {
+        font-size: 11px;
+        padding: 4px 8px;
+    }
+    .heart-icon {
+        font-size: 16px;
+        padding: 6px;
+    }
+}
+
+/* 9thsec */
+
+/* Section Styling */
+.delicious-deals-section {
+    padding: 30px 20px; /* Adjust padding as needed */
+    background-color: #fff; /* White background for the section */
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-header h2 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+}
+
+.navigation-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.arrow-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.arrow-btn:hover {
+    background-color: #f0f0f0;
+    color: #000;
+    transform: scale(1.05);
+}
+
+/* Restaurants Container (for scrolling) */
+.restaurants-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    scroll-behavior: smooth; /* Smooth scroll for arrow buttons */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling performance on iOS */
+    gap: 20px; /* Space between cards */
+    padding-bottom: 15px; /* Space for scrollbar on some browsers */
+}
+
+/* Hide scrollbar for aesthetic purposes (optional) */
+.restaurants-container::-webkit-scrollbar {
+    display: none;
+}
+.restaurants-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Individual Restaurant Card */
+.restaurant-card {
+    flex: 0 0 auto; /* Do not grow, do not shrink, base size auto */
+    width: 300px; /* Fixed width for each card, adjust as needed */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For heart icon and logo circle */
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 180px; /* Fixed height for consistent images */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 18px;
+    color: #e74c3c; /* Red heart */
+    cursor: pointer;
+    z-index: 10;
+}
+
+.logo-circle {
+    position: absolute;
+    bottom: -20px; /* Half out of the image to sit below it */
+    left: 20px;
+    background-color: #fff;
+    border: 2px solid #eee; /* Light border */
+    border-radius: 50%;
+    width: 50px; /* Size of the circle */
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 5; /* Ensure it's above card content but below image */
+}
+
+.logo-circle img {
+    width: 80%; /* Adjust logo size within circle */
+    height: 80%;
+    object-fit: contain; /* Ensure logo is fully visible */
+    border-radius: 50%; /* If logo itself is circular */
+}
+
+.card-content {
+    padding: 25px 15px 15px 15px; /* Top padding adjusted for logo circle */
+    position: relative; /* To contain its elements */
+}
+
+.restaurant-name {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #f39c12; /* Star color */
+}
+
+.rating .stars {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cuisine {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.details {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.offer {
+    background-color: #ffe0e6; /* Light red/pink background */
+    color: #e74c3c; /* Red text */
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* Responsive Design (Media Queries) */
+@media (max-width: 1024px) {
+    .section-header h2 {
+        font-size: 24px;
+    }
+    .arrow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+    .restaurant-card {
+        width: 280px; /* Slightly smaller cards on tablets */
+    }
+    .card-image {
+        height: 160px;
+    }
+    .logo-circle {
+        width: 45px;
+        height: 45px;
+        bottom: -22px;
+    }
+    .restaurant-name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .section-header h2 {
+        font-size: 22px;
+    }
+    .navigation-arrows {
+        width: 100%;
+        justify-content: flex-end; /* Arrows align to right below title */
+    }
+    .restaurant-card {
+        width: 250px; /* Even smaller cards on smaller tablets/large phones */
+    }
+    .card-image {
+        height: 150px;
+    }
+    .logo-circle {
+        width: 40px;
+        height: 40px;
+        bottom: -20px;
+        left: 15px;
+    }
+    .card-content {
+        padding: 20px 10px 10px 10px;
+    }
+    .cuisine, .details, .offer {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .delicious-deals-section {
+        padding: 20px 15px;
+    }
+    .section-header h2 {
+        font-size: 20px;
+    }
+    .arrow-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+    .restaurant-card {
+        width: 85vw; /* Cards take up most of the viewport width on phones */
+    }
+    .card-image {
+        height: 50vw; /* Adjust image height relative to viewport width */
+    }
+    .logo-circle {
+        width: 35px;
+        height: 35px;
+        bottom: -17px;
+        left: 10px;
+    }
+    .restaurant-name {
+        font-size: 16px;
+    }
+    .card-content {
+        padding: 18px 8px 8px 8px;
+    }
+}
+
+/* 10th sec */
+
+.app-section-wrapper {
+    position: relative;
+    padding: 50px 20px; /* Adjust padding as needed */
+    overflow: hidden;
+    background-color: #ffffff; /* White background for the main section */
+    border-radius: 15px; /* Rounded corners for the section container */
+    margin: 50px auto; /* Center the section and add some margin */
+    max-width: 1200px; /* Max width for the content */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.app-section-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px; /* Space between flex items */
+}
+
+/* App Info (Text and Buttons) */
+.app-info {
+    flex: 1; /* Allows this section to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+    text-align: left;
+    padding-left: 20px; /* Adjust as needed */
+}
+
+.app-info h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #333; /* Darker color for heading */
+}
+
+.app-info p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #666;
+    max-width: 500px; /* Limit paragraph width for readability */
+}
+
+.app-download-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between download buttons */
+}
+
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #333;
+}
+
+.download-button i {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+.download-button span:first-of-type {
+    font-size: 0.7em;
+    display: block;
+    line-height: 1;
+}
+
+.download-button span:last-of-type {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    line-height: 1;
+}
+
+/* Specific styling for Google Play button to match image */
+.google-play {
+    background-color: #000; /* Or a specific dark grey if preferred */
+    color: #fff;
+}
+
+/* App Mockups */
+.app-mockups {
+    flex: 1; /* Allows this section to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center the mockups */
+    align-items: flex-end; /* Align to the bottom to create the staggered effect */
+    padding-top: 50px; /* Space for the overlapping effect */
+    padding-right: 20px; /* Adjust as needed */
+}
+
+.phone-mockup {
+    max-width: 280px; /* Adjust phone size */
+    height: auto;
+    border-radius: 35px; /* Rounded corners for phone screens */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    position: absolute;
+    bottom: 0; /* Align to the bottom of the container */
+}
+
+.phone-mockup-1 {
+    z-index: 2; /* Bring the first phone to the front */
+    left: 50%;
+    transform: translateX(-65%); /* Adjust to move it slightly left */
+    bottom: 0;
+}
+
+.phone-mockup-2 {
+    z-index: 1; /* Keep the second phone behind */
+    right: 50%;
+    transform: translateX(65%); /* Adjust to move it slightly right */
+    bottom: -20px; /* Slightly lower than the first for the staggered effect */
+    opacity: 0.9; /* Slight opacity for the back phone */
+}
+
+/* Background Large Z Logo */
+.background-logo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0.05; /* Very subtle */
+    z-index: 0; /* Ensure it's in the background */
+    width: 250px; /* Adjust size of the logo */
+    height: auto;
+    pointer-events: none; /* Make it non-interactive */
+}
+
+.background-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .app-section-container {
+        flex-direction: column; /* Stack elements vertically */
+        text-align: center;
+    }
+
+    .app-info {
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .app-download-links {
+        justify-content: center; /* Center buttons when stacked */
+    }
+
+    .app-mockups {
+        padding-top: 20px; /* Less top padding when stacked */
+        padding-right: 0;
+        min-height: 400px; /* Ensure space for mockups */
+        width: 100%;
+        max-width: 600px; /* Limit mockup container width */
+        margin: 0 auto; /* Center the mockup container */
+    }
+
+    .phone-mockup-1, .phone-mockup-2 {
+        position: relative; /* Change to relative for easier positioning */
+        top: auto;
+        left: auto;
+        transform: none; /* Remove transformations */
+        margin: 0 auto; /* Center individual mockups */
+        display: block; /* Make them block elements */
+        max-width: 250px; /* Adjust size for smaller screens */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Slightly less intense shadow */
+    }
+
+    .phone-mockup-1 {
+        margin-bottom: -50px; /* Overlap slightly */
+        z-index: 2;
+    }
+
+    .phone-mockup-2 {
+        z-index: 1;
+        opacity: 1; /* Remove opacity when stacked */
+    }
+
+    .background-logo {
+        width: 150px; /* Smaller logo on smaller screens */
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .app-info h1 {
+        font-size: 2.5em;
+    }
+
+    .app-info p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 576px) {
+    .app-info h1 {
+        font-size: 2em;
+    }
+
+    .app-download-links {
+        flex-direction: column; /* Stack buttons on very small screens */
+        align-items: center;
+    }
+
+    .download-button {
+        width: 80%; /* Make buttons wider */
+        max-width: 250px;
+    }
+
+    .app-mockups {
+        min-height: 350px;
+    }
+
+    .phone-mockup {
+        max-width: 220px;
+    }
+}
+
+/* 11mainfooter */
+
+/* Main Footer Styles */
+.main-footer {
+    background-color: #B4264C; /* Deep reddish-pink color from the image */
+    color: #fff;
+    padding: 40px 20px 20px; /* Top, horizontal, bottom padding */
+    border-top-left-radius: 20px; /* Rounded top-left corner */
+    border-top-right-radius: 20px; /* Rounded top-right corner */
+    position: relative; /* Needed for the shape to be inside */
+}
+
+.footer-container {
+    max-width: 1200px; /* Limit content width */
+    margin: 0 auto; /* Center the container */
+    display: flex;
+    flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+    justify-content: space-between; /* Distribute space between columns */
+    gap: 30px; /* Space between columns */
+    padding-bottom: 40px; /* Space above the bottom section */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator line */
+}
+
+.footer-column {
+    flex: 1; /* Allow columns to grow and shrink */
+    min-width: 150px; /* Minimum width for each column before wrapping */
+    padding: 0 10px; /* Inner padding for columns */
+}
+
+.footer-column h3 {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: rgba(255, 255, 255, 0.8); /* Slightly lighter on hover */
+}
+
+/* Specific styling for contact column */
+.contact-column p {
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.contact-column p a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.contact-column .contact-note {
+    font-size: 0.8em;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+/* Download App Column */
+.download-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align badges to the left */
+}
+
+.download-column h3 {
+    margin-bottom: 20px;
+}
+
+.app-download-button {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.app-download-button img {
+    width: 150px; /* Adjust badge size as needed */
+    height: auto;
+    display: block;
+    border-radius: 8px; /* Slightly rounded corners for badges */
+    transition: transform 0.2s ease;
+}
+
+.app-download-button img:hover {
+    transform: scale(1.03);
+}
+
+/* Footer Bottom Section (Logo, Copyright, Social Media) */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 20px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+}
+
+.footer-logo img {
+    height: 30px; /* Adjust logo height */
+    width: auto;
+}
+
+.social-media {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.9em;
+}
+
+.social-media a {
+    color: #fff;
+    font-size: 1.3em;
+    width: 35px; /* Fixed size for circular icons */
+    height: 35px;
+    border-radius: 50%; /* Make them circular */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Border for icons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.social-media a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .footer-column {
+        min-width: 180px; /* Allow columns to be slightly wider */
+    }
+
+    .footer-container {
+        justify-content: center; /* Center columns when they start wrapping */
+    }
+
+    .download-column {
+        align-items: center; /* Center download badges when it wraps */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 30px 15px 15px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .footer-column {
+        flex-basis: 45%; /* Two columns per row */
+        margin-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Stack bottom elements vertically */
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .social-media {
+        margin-top: 10px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-column {
+        flex-basis: 90%; /* Single column layout on very small screens */
+        min-width: unset;
+        text-align: center; /* Center text for single column */
+    }
+
+    .footer-column h3 {
+        margin-bottom: 10px;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 5px;
+    }
+
+    .download-column {
+        align-items: center;
+    }
+}
